@@ -28,6 +28,7 @@ public class PongPanel extends JPanel implements KeyListener, ActionListener {
 	private final static int WINNER_FONT_SIZE = 40;
 	private final static String WINNER_FONT_FAMILY = "Serif";
 	private final static String WINNER_TEXT = "WIN!";
+	private final static String RESTART_GAME = "Hit Enter to Restart";
 	
 	int player1Score = 0;
 	int player2Score = 0;
@@ -97,16 +98,30 @@ public class PongPanel extends JPanel implements KeyListener, ActionListener {
 	}
 	
 	private void displayWin(Graphics g) {
+		//if there is a game winner
 		if(gameWinner != null) {
-            Font winnerFont = new Font(WINNER_FONT_FAMILY, Font.BOLD, WINNER_FONT_SIZE);
+		   //set font variables for graphics
+           Font winnerFont = new Font(WINNER_FONT_FAMILY, Font.BOLD, WINNER_FONT_SIZE);
+           //initialise the graphics to be displayed
            g.setFont(winnerFont);
+           //declare variable to get x position of text placement
            int xPosition = getWidth() / 2;
+           //if player one wins the game
            if(gameWinner == Player.One) {
+        	   //x position will be on the left hand side of the screen
                xPosition -= WINNER_TEXT_X;
+             // if player two wins the game
            } else if(gameWinner == Player.Two) {
+        	   //x position will be on the right hand side of the screen
                xPosition += WINNER_TEXT_X;
            }
+           // draw the winner graphics to the screen
            g.drawString(WINNER_TEXT, xPosition, WINNER_TEXT_Y);
+           
+           // draw the restart graphics to the screen if gamestate is gameover
+           if (gameState == GameState.GameOver) {
+        	   g.drawString(RESTART_GAME, (getWidth() / 4), (getHeight() - 100));
+           }
        }
 	}
 	

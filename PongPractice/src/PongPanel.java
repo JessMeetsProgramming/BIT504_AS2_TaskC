@@ -144,6 +144,7 @@ public class PongPanel extends JPanel implements KeyListener, ActionListener {
             checkWin();				//check if a player has won the game
             break;
        }
+	   
        case GameOver: {
            break;
        }
@@ -162,6 +163,21 @@ public class PongPanel extends JPanel implements KeyListener, ActionListener {
 	private void resetBall() {
 		ball.resetToInitialPosition();
 	}
+	
+	private void resetPaddles() {
+		paddle1.resetToInitialPosition();
+		paddle2.resetToInitialPosition();
+	}
+	
+	private void resetScores() {
+		player1Score = 0;
+		player2Score = 0;
+	}
+	
+	private void resetWinner() {
+		gameWinner = null;
+	}
+
 	
 	private void checkWallBounce() {
 		 if(ball.getXPosition() <= 0) {

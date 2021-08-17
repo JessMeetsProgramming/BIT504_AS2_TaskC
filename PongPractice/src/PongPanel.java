@@ -144,7 +144,18 @@ public class PongPanel extends JPanel implements KeyListener, ActionListener {
             checkWin();				//check if a player has won the game
             break;
        }
-	   
+        case Restart: {
+    		//reset ball and paddles
+           	resetBall();
+           	resetPaddles();
+           	//reset scores
+           	resetScores();
+           	//reset win status to clear graphics from screen
+           	resetWinner();
+           	//set gamestate to playing to start the game play actions again
+           	gameState = GameState.Playing;
+           	break;
+    	   }
        case GameOver: {
            break;
        }

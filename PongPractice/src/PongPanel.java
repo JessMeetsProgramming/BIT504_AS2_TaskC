@@ -223,6 +223,11 @@ public class PongPanel extends JPanel implements KeyListener, ActionListener {
          } else if(e.getKeyCode() == KeyEvent.VK_S) {
              paddle1.setYVelocity(1);
          }
+		 
+		//restart game when enter is pressed
+		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+			gameState = GameState.Restart;
+		}
 		
 	}
 
